@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+    - master
+    - snyk-fix-9da05a4429eb4d63232086bdcc77a837
+name: Semgrep
+jobs:
+  semgrep:
+    name: Scan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: returntocorp/semgrep-action@v1
+      with:
+        publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
